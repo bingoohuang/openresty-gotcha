@@ -20,7 +20,15 @@
 ---|---|---|---|---|---
 8万|2万|1.7万|2.8万|5万|4.7万
 
+## 参数文章
+
+1. [10 Tips for 10x Application Performance](https://www.nginx.com/blog/10-tips-for-10x-application-performance/)
+1. [HTTP Keepalive Connections and Web Performance](https://www.nginx.com/blog/http-keepalives-and-web-performance/)
+1. [Developing a user-friendly OpenResty application OpenResty Con 2017 - Beijing](https://con.openresty.org/cn/2017/books/developing%20a%20friendly%20openresty%20application.pdf)
+
 ## 测试输出
+
+![image](https://user-images.githubusercontent.com/1940588/98348557-def67400-2053-11eb-959e-0c40eb172c8c.png)
 
 1. 直压:
 
