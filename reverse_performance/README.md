@@ -25,6 +25,7 @@
 1. [10 Tips for 10x Application Performance](https://www.nginx.com/blog/10-tips-for-10x-application-performance/)
 1. [HTTP Keepalive Connections and Web Performance](https://www.nginx.com/blog/http-keepalives-and-web-performance/)
 1. [Developing a user-friendly OpenResty application OpenResty Con 2017 - Beijing](https://con.openresty.org/cn/2017/books/developing%20a%20friendly%20openresty%20application.pdf)
+1. [巧用 Nginx 实现大规模分布式集群的高可用性](https://blog.csdn.net/russell_tao/article/details/98936540)
 
 ## 测试输出
 
@@ -131,3 +132,25 @@ Read throughput:		12 MiB/sec
 Write throughput:		3.9 MiB/sec
 Test time:			10.005103665s
 ```
+
+## 重点
+
+1. [balancer.set_current_peer](https://github.com/openresty/lua-resty-core/blob/master/lib/ngx/balancer.md#set_current_peer)
+
+balancer_by_lua阶段可以在其早期阶段（例如access_by_lua\*）中通过ngx.ctx来传值. 实践中，不能在content_by_lua中传值。
+
+
+
+    set_current_peer
+    syntax: ok, err = balancer.set_current_peer(host, port)
+
+    context: balancer_by_lua*
+
+    Sets the peer address (host and port) for the current backend query (which may be a retry).
+
+    Domain names in host do not make sense. You need to use OpenResty libraries like lua-resty-dns to obtain IP address(es) from all the domain names before entering the balancer_by_lua* handler (for example, you can perform DNS lookups in an earlier phase like access_by_lua* and pass the results to the balancer_by_lua* handler via ngx.ctx.
+
+
+![image](https://user-images.githubusercontent.com/1940588/98350066-c9824980-2055-11eb-9f2f-a92a0ff88a53.png)
+
+图片来自[这里](https://wiki.shileizcc.com/confluence/pages/viewpage.action?pageId=47415936)
