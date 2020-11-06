@@ -1,13 +1,24 @@
 # 反向代理几种实现方式的性能测试对比
 
+## 依赖
+
+1. [openresty](https://openresty.org/cn/download.html)
+1. [resty.http](https://github.com/ledgetech/lua-resty-http)
+1. [gobench](https://github.com/bingoohuang/gobench/tree/master/cmd/gobench)
+1. [go-rest-server](https://github.com/bingoohuang/gobench/tree/master/cmd/go-rest-server)
+
+## 安装
+
+1. 安装 openresty
 1. 安装 `OPENRESTY_HOME=~/openresty ./install.sh`
-1. 启动 `$OPENRESTY_HOME/bin/resty`
+1. 启动反向代理 `$OPENRESTY_HOME/bin/resty`
+1. 启动目标服务 `go-rest-server -addr :8812`, `go-rest-server -addr :8813`
 
 ## 测试
 
 直压|upstream|ngx.location.capture|resty.http|upstream(连接池1000)|upstream \+ balancer
 ---|---|---|---|---|---
-8万|2万|1.7万|2.8万|6万|4.7万
+8万|2万|1.7万|2.8万|5万|4.7万
 
 ## 测试输出
 
