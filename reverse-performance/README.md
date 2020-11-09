@@ -139,8 +139,6 @@ Test time:			10.005103665s
 
 balancer_by_lua阶段可以在其早期阶段（例如access_by_lua\*）中通过ngx.ctx来传值. 实践中，不能在content_by_lua中传值。
 
-
-
     set_current_peer
     syntax: ok, err = balancer.set_current_peer(host, port)
 
@@ -149,7 +147,6 @@ balancer_by_lua阶段可以在其早期阶段（例如access_by_lua\*）中通�
     Sets the peer address (host and port) for the current backend query (which may be a retry).
 
     Domain names in host do not make sense. You need to use OpenResty libraries like lua-resty-dns to obtain IP address(es) from all the domain names before entering the balancer_by_lua* handler (for example, you can perform DNS lookups in an earlier phase like access_by_lua* and pass the results to the balancer_by_lua* handler via ngx.ctx.
-
 
 ![image](https://user-images.githubusercontent.com/1940588/98350066-c9824980-2055-11eb-9f2f-a92a0ff88a53.png)
 
