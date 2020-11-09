@@ -16,9 +16,14 @@
 
 ## 测试
 
-直压|upstream|ngx.location.capture|resty.http|upstream(连接池1000)|upstream \+ balancer
----|---|---|---|---|---
-8万|2万|1.7万|2.8万|5万|4.7万
+\#|实现方式|TPS
+---|---|---
+1|无反代直压|8万
+2|upstream(连接池1000)|5万
+3|upstream \+ balancer|4.7万
+4|resty.http|2.8万
+5|upstream|2万
+6|ngx.location.capture|1.7万
 
 ## 参数文章
 
