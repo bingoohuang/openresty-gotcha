@@ -31,6 +31,7 @@
 1. [HTTP Keepalive Connections and Web Performance](https://www.nginx.com/blog/http-keepalives-and-web-performance/)
 1. [Developing a user-friendly OpenResty application OpenResty Con 2017 - Beijing](https://con.openresty.org/cn/2017/books/developing%20a%20friendly%20openresty%20application.pdf)
 1. [巧用 Nginx 实现大规模分布式集群的高可用性](https://blog.csdn.net/russell_tao/article/details/98936540)
+1. [nginx优化——包括https、keepalive等](https://lanjingling.github.io/2016/06/11/nginx-https-keepalived-youhua/), [本地](keepalive-https.md)
 
 ## 测试输出
 
