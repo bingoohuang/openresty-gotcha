@@ -23,8 +23,7 @@
 3|upstream \+ balancer|1000|4.7万
 4|resty.http|1000|2.8万
 5|upstream|无-不设置|2万
-6|ngx.location.capture|无-不设置|1.7万
-
+6|ngx.location.capture|无-无法设|1.7万
 
 ## 参数文章
 
