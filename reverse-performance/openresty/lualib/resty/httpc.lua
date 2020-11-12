@@ -3,6 +3,9 @@ local _M = {}
 local ngx = require 'ngx'
 local http = require 'resty.http'
 local ngx_req = ngx.req
+local ngx_ERR = ngx.ERR
+local ngx_log = ngx.log
+local ngx_print = ngx.print
 local ngx_req_get_headers = ngx_req.get_headers
 local ngx_req_get_method = ngx_req.get_method
 local ngx_req_read_body = ngx_req.read_body
@@ -31,7 +34,7 @@ function _M.request(uri, options)
         }
     )
     if err then
-        ngx.log(ngx.ERR, 'httpc:request_uri err : ', err)
+        ngx_log(ngx_ERR, 'httpc:request_uri err : ', err)
         ngx.say('httpc:request_uri err : ', err)
         ngx.status = 500
         return err
@@ -43,7 +46,7 @@ function _M.request(uri, options)
         ngx.header[k] = v
     end
     ngx.header['Content-Length'] = string.len(res.body)
-    ngx.print(res.body)
+    ngx_print(res.body)
 
     return nil
 end

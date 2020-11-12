@@ -16,14 +16,14 @@
 
 ## 测试
 
-\#|实现方式|TPS
----|---|---
-1|无反代直压|8万
-2|upstream(连接池1000)|5万
-3|upstream \+ balancer|4.7万
-4|resty.http|2.8万
-5|upstream|2万
-6|ngx.location.capture|1.7万
+\#|实现方式|连接池大小|TPS
+---|---|---|---
+1|无反代直压|100|8万
+2|upstream|1000|5万
+3|upstream \+ balancer|1000|4.7万
+4|resty.http|1000|2.8万
+5|upstream|无-不设置|2万
+6|ngx.location.capture|无-无法设|1.7万
 
 ## 参数文章
 
@@ -31,6 +31,7 @@
 1. [HTTP Keepalive Connections and Web Performance](https://www.nginx.com/blog/http-keepalives-and-web-performance/)
 1. [Developing a user-friendly OpenResty application OpenResty Con 2017 - Beijing](https://con.openresty.org/cn/2017/books/developing%20a%20friendly%20openresty%20application.pdf)
 1. [巧用 Nginx 实现大规模分布式集群的高可用性](https://blog.csdn.net/russell_tao/article/details/98936540)
+1. [nginx优化——包括https、keepalive等](https://lanjingling.github.io/2016/06/11/nginx-https-keepalived-youhua/), [本地](keepalive-https.md)
 
 ## 测试输出
 
