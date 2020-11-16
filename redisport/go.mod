@@ -1,4 +1,4 @@
-module redis-port
+module redisport
 
 go 1.15
 
