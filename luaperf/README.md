@@ -126,3 +126,49 @@ print("table.maxn of tab3 :", table.maxn(tab3), ", #:", #(tab3))
 -- table.maxn of tab2 :    0   , #:    0
 -- table.maxn of tab3 :    0   , #:    0
 ```
+
+## lua-releng
+
+lua有一个工具[lua-releng](https://github.com/openresty/openresty-devel-utils/blob/master/lua-releng) 用来检测代码中的所有全局变量。
+
+在macos系统，通过`brew install lua` 命令安装的lua， lua的版本号是5.2.4,但是lua-releng仅支持lua5.1版本，所以要将本地的lua替换成5.1的版本。
+
+安装步骤：
+
+1. [下载源码](http://www.lua.org/versions.html) 从中选择5.1.5进行下载
+1. 解压： tar -zxvf lua-5.1.5.tar.gz
+1. cd lua-5.1.5
+1. make
+1. make macosx
+1. make test
+1. make install
+1. which lua
+1. lua -v
+
+## brew
+
+1. `sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"`
+1. `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
+1. `brew install lua@5.1`
+1. `lua5.1 -v`
+
+## luajit
+
+1. 参考[【LuaJIT版】从零开始在 macOS 上配置 Lua 开发环境](https://cloud.tencent.com/developer/article/1011303)
+1. 下载源码 `https://github.com/openresty/luajit2`
+1. 安装 
+    - export MACOSX_DEPLOYMENT_TARGET=10.14
+    - make install PREFIX=~/luajit
+    - [参见](https://github.com/bingoohuang/blog/issues/181)
+1. 安装 Lua 模块管理工具：LuaRocks
+    - brew tap mesca/luarocks
+    - brew install luarocks51 --with-luajit
+1. 安装 luasocket
+    - sudo luarocks-jit install luasocket
+1. 配置 LuaCheck 静态检查工具
+    - sudo luarocks-jit install luacheck
+1. alias 命令别名
+    - alias lua="/usr/local/bin/luajit"
+    - alias luarocks="/usr/local/bin/luarocks-jit"
+1. 如果已经安装过 Lua 5.1，可能需要先移除它
+    - brew unlink lua@5.1
